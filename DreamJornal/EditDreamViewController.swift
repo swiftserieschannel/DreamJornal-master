@@ -84,25 +84,25 @@ class EditDreamViewController: UIViewController,UIImagePickerControllerDelegate,
             
             if let image = imageEdit.image, let jpegData = image.jpegData(compressionQuality: 0.8)  {
                 newDiary.images = jpegData
-                
+                newDiary.thumb = jpegData
                 
             }
-            if let image = imageEdit.image {
-                UIGraphicsBeginImageContext(CGSize(width: 80, height: 80))
-                let ratio = image.size.width/image.size.height
-                let scaleWidth = ratio*80
-                let offsetX = (scaleWidth-80)/2
-                image.draw(in: CGRect(x: -offsetX, y: 0, width: scaleWidth, height: 80))
-                let thumb = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                
-                if let thumb = thumb, let jpegData = thumb.jpegData(compressionQuality: 0.8) {
-                    newDiary.thumb = jpegData
-                    
-                    dismiss(animated: true, completion: nil)
-                    navigationController?.popViewController(animated: true)
-                }
-            }
+//            if let image = imageEdit.image {
+//                UIGraphicsBeginImageContext(CGSize(width: 80, height: 80))
+//                let ratio = image.size.width/image.size.height
+//                let scaleWidth = ratio*80
+//                let offsetX = (scaleWidth-80)/2
+//                image.draw(in: CGRect(x: -offsetX, y: 0, width: scaleWidth, height: 80))
+//                let thumb = UIGraphicsGetImageFromCurrentImageContext()
+//                UIGraphicsEndImageContext()
+//
+//                if let thumb = thumb, let jpegData = thumb.jpegData(compressionQuality: 0.8) {
+//                    newDiary.thumb = jpegData
+//
+//                    dismiss(animated: true, completion: nil)
+//                    navigationController?.popViewController(animated: true)
+//                }
+//            }
             
             
             appDelegate.saveContext()
